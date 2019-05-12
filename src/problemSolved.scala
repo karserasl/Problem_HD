@@ -15,22 +15,25 @@ object problemSolved {
   def abundant(x: Long): Boolean = {
     (for ( i <- 2 to x.toInt / 2 if x % i == 0 ) yield i).sum + 1 > x
   }
-  def checkIfSum(lst: ListBuffer[Int], k: Int): Boolean = {
-    var a = false
-    for ( i <- lst.indices ) {
-      if ( lst contains (k - i) ) a = true
-    }
-    a
-  }
+  
   var listAbundant = new ListBuffer[Int]
+  
   for ( i <- 1 to 28123 if abundant(i) ) {
     listAbundant += i
   }
+  
+  def checkIfSum(lst: ListBuffer[Int], k: Int): Boolean = {
+    var b = false
+    for ( i <- lst ) {
+      if ( lst contains (k - i) ) b = true
+    }
+    b
+  }
+  
   def calculate_sum(): Int = {
-    (for ( i <- 0 to 28123 if !checkIfSum(listAbundant, i) ) yield i).sum
+    (for ( i <- 1 to 28123 if !checkIfSum(listAbundant, i) ) yield i).sum
   }
   def main(args: Array[String]): Unit = {
-    
     println(calculate_sum())
   }
   
