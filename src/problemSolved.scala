@@ -26,7 +26,7 @@ object problemSolved {
   for ( i <- 1 to 28123 if abundant(i) ) {
     listAbundant += i
   }
-  def calculate_sum() = {
+  def calculate_sum(): Int = {
     (for ( i <- 0 to 28123 if !checkIfSum(listAbundant, i) ) yield i).sum
   }
   def main(args: Array[String]): Unit = {
